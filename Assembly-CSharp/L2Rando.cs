@@ -1,4 +1,5 @@
-﻿using System;
+﻿#define DEV
+using System;
 using System.IO;
 using System.Linq;
 using System.Collections;
@@ -10,6 +11,7 @@ using L2Flag;
 using L2MobTask;
 using LM2RandomiserMod.Patches;
 using LaMulana2RandomizerShared;
+using LM2RandomiserMod.CrowdControl;
 
 namespace LM2RandomiserMod
 {
@@ -49,6 +51,7 @@ namespace LM2RandomiserMod
         private patched_L2System sys;
         private L2ShopDataBase shopDataBase;
         private L2TalkDataBase talkDataBase;
+        private CrowdControlServer crowdControlServer;
 
         private Dictionary<string, GameObject> objects;
 
@@ -381,10 +384,12 @@ namespace LM2RandomiserMod
             this.shopDataBase = shopDataBase;
             this.talkDataBase = talkDataBase;
             sys = system;
+            this.crowdControlServer = new CrowdControlServer(system);
             gameObject.AddComponent<ItemTracker>();
 #if DEV
             DevUI devUI = gameObject.AddComponent<DevUI>() as DevUI;
             devUI.Initialise(sys);
+            this.crowdControlServer.AddDebug(devUI);
 #endif
             StartCoroutine(InitalSetup());
         }

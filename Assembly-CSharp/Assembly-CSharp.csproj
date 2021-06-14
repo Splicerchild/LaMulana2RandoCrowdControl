@@ -127,6 +127,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>$(LAMULANA2PATH)\LaMulana2_Data\Managed\UnityEngine.UIModule.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.JSONSerializeModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(LAMULANA2PATH)\LaMulana2_Data\Managed\UnityEngine.JSONSerializeModule.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ExitDB.cs" />
@@ -134,6 +138,7 @@
     <Compile Include="ItemDB.cs" />
     <Compile Include="ItemTracker.cs" />
     <Compile Include="L2Rando.cs" />
+    <Compile Include="CrowdControlServer.cs" />
     <Compile Include="Patches\TrapFloor.cs" />
     <Compile Include="Patches\L2SystemCore.cs" />
     <Compile Include="Patches\EventItemScript.cs" />

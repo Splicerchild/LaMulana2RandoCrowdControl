@@ -32,6 +32,13 @@ namespace LM2RandomiserMod
         private string getFlagString;
         private string getValueString;
 
+        private string ccIdString;
+        private string ccCodeString;
+        private string ccTypeString;
+        private string ccTimeString;
+        public string ccConnected = "No CC";
+        public string ccMessage;
+
         public void Initialise(L2System l2System)
         {
             sys = l2System;
@@ -70,7 +77,14 @@ namespace LM2RandomiserMod
                 {
                     GetFlag();
                 }
-                
+
+                ccIdString = GUI.TextArea(new Rect(400, 0, 100, 25), ccIdString);
+                ccCodeString = GUI.TextArea(new Rect(400, 25, 100, 25), ccCodeString);
+                ccTypeString = GUI.TextArea(new Rect(400, 50, 100, 25), ccTypeString);
+                ccTimeString = GUI.TextArea(new Rect(400, 75, 100, 25), ccTimeString);
+                ccConnected = GUI.TextArea(new Rect(400, 100, 100, 25), ccConnected);
+                ccMessage = GUI.TextArea(new Rect(400, 125, 400, 425), ccMessage);
+
                 sys.setPandaModeHP(GUI.Toggle(new Rect(300, 0, 120, 25), sys.getPandaModeHP(), "Panda Mode"));
                 sys.setPandaModeHit(GUI.Toggle(new Rect(300, 25, 120, 25), sys.getPandaModeHit(), "Panda Hit Mode"));
             }
@@ -126,6 +140,14 @@ namespace LM2RandomiserMod
                 sys.drawHitBox(!sys.drawHitBoxFlag);
 
             UpdateBGSys();
+        }
+        
+        public void UpdateCCMessage(int id, string code, int type)
+        {
+            this.ccIdString = id.ToString();
+            this.ccCodeString = code;
+            this.ccTypeString = type.ToString();
+            this.ccTimeString = System.DateTime.Now.ToString();
         }
 
         private void UpdateBGSys()
